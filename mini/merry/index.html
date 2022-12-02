@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>두더지 게임</title>
+<title>다람쥐 게임</title>
 <style>
   .cell {
     display: inline-block; position: relative;
@@ -121,6 +121,7 @@
   const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let started = false;
 let score = 0;
+
 $start.addEventListener('click', () => {
   if (started) return; 
   started = true;
@@ -158,10 +159,19 @@ $$cells.forEach(($cell, index) => {
   $cell.querySelector('.gopher').addEventListener('click', (event) => {
     event.target.classList.add('dead');
     event.target.classList.add('hidden');
-    clearTimeout(holes[index]); // 기존 내려가는 타이머 제거
+    clearTimeout(holes[index]); 
     setTimeout(() => {
       holes[index] = 0;
       event.target.classList.remove('dead');
+    }, 1000);
+  });
+  $cell.querySelector('.bomb').addEventListener('click', (event) => {
+    event.target.classList.add('boom');
+    event.target.classList.add('hidden');
+    clearTimeout(holes[index]); 
+    setTimeout(() => {
+      holes[index] = 0;
+      event.target.classList.remove('boom');
     }, 1000);
   });
 });
