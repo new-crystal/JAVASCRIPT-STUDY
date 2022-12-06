@@ -2,46 +2,8 @@
 <head>
 <meta charset="UTF-8">
 <title>다람쥐 게임</title>
-<style>
-  .cell {
-    display: inline-block; position: relative;
-    width: 200px; height: 200px;
-    background: 'yellow'; overflow: hidden;
-  }
-  .gopher, .bomb {
-    width: 200px; height: 200px; bottom: 0;
-    position: absolute; transition: bottom 1s;
-  }
-  .gopher {
-    background: url('https://littledeep.com/wp-content/uploads/2020/02/littledeep_squirrel_style1.png') center center no-repeat;
-    background-size: 200px 200px;
-  }
-  .dead {
-    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt2T1F-Z3QXsF0zWT5VrndBZRC9bLZTnJtlw&usqp=CAU') center center no-repeat;
-    background-size: 200px 200px;
-  }
-  .bomb {
-    background: url("https://raw.githubusercontent.com/ZeroCho/es2021-webgame/master/bomb.png") center center no-repeat;
-    background-size: 200px 200px;
-  }
-  .boom {
-    background: url('https://raw.githubusercontent.com/ZeroCho/es2021-webgame/master/explode.png') center center no-repeat;
-    background-size: 200px 200px;
-  }
-  .hidden {
-    bottom: -200px;
-  }
-  .hole {
-    width: 200px; height: 150px; position: absolute; bottom: 0;
-    background: url('https://raw.githubusercontent.com/ZeroCho/es2021-webgame/master/mole-hole.png') center center no-repeat;
-    background-size: 200px 150px;
-  }
-  .hole-front {
-    width: 200px; height: 30px; position: absolute; bottom: 0;
-    background: url('https://raw.githubusercontent.com/ZeroCho/es2021-webgame/master/mole-hole-front.png') center center no-repeat;
-    background-size: 200px 30px;
-  }
-</style>
+<link rel="stylesheet" href="main.css">
+<script src="main.js" defer></script>
 </head>
 <body>
 <div>
@@ -111,71 +73,5 @@
     </div>
   </div>
 </div>
-<script>
-  const $timer = document.querySelector('#timer');
-  const $score = document.querySelector('#score');
-  const $game = document.querySelector('#game');
-  const $start = document.querySelector('#start');
-  const $$cells = document.querySelectorAll('.cell');
-
-  const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
-let started = false;
-let score = 0;
-
-$start.addEventListener('click', () => {
-  if (started) return; 
-  started = true;
-  console.log('시작');
-  const tickId = setInterval(tick, 1000);
-  tick();
-});
-
-let gopherPercent = 0.3;
-let bombPercent = 0.5;
-
-function tick() {
-  holes.forEach((hole, index) => {
-    if (hole) return;
-    const randomValue = Math.random();
-    if (Math.random() < gopherPercent) {
-      const $gopher = $$cells[index].querySelector('.gopher');
-      holes[index] = setTimeout(() => { 
-        $gopher.classList.add('hidden');
-        holes[index] = 0;
-      }, 1000);
-      $gopher.classList.remove('hidden');
-    } else if (Math.random() < bombPercent) {
-      const $bomb = $$cells[index].querySelector('.bomb');
-      holes[index] = setTimeout(() => { 
-        $bomb.classList.add('hidden');
-        holes[index] = 0;
-      }, 1000);
-      $bomb.classList.remove('hidden');
-    }
-  });
-}
-
-$$cells.forEach(($cell, index) => {
-  $cell.querySelector('.gopher').addEventListener('click', (event) => {
-    event.target.classList.add('dead');
-    event.target.classList.add('hidden');
-    clearTimeout(holes[index]); 
-    setTimeout(() => {
-      holes[index] = 0;
-      event.target.classList.remove('dead');
-    }, 1000);
-  });
-  $cell.querySelector('.bomb').addEventListener('click', (event) => {
-    event.target.classList.add('boom');
-    event.target.classList.add('hidden');
-    clearTimeout(holes[index]); 
-    setTimeout(() => {
-      holes[index] = 0;
-      event.target.classList.remove('boom');
-    }, 1000);
-  });
-});
-
-</script>
 </body>
 </html>
