@@ -1,5 +1,17 @@
+body{
+  /* cursor: none; */
+}
+.cursor{
+  width: 100px; height: 100px;
+  /* background-size: 50px 50px;  */
+  position: absolute; left: 0; top: 0; 
+	z-index: 999;
+  background: url("./tori.png") center center no-repeat;
+  transform: translate(-50%, -50%);
+}
+
 .cell {
-    display: inline-block; position: relative;
+  display: inline-block; position: relative;
     width: 200px; height: 200px;
     background: 'yellow'; overflow: hidden;
   }
