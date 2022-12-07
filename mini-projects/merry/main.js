@@ -56,6 +56,8 @@ cells.forEach((cell, index) => {
     }, 1000);
   });
   cell.querySelector(".bomb").addEventListener("click", (event) => {
+    score -= 20;
+    scores.textContent = score;
     event.target.classList.add("boom");
     event.target.classList.add("hidden");
     clearTimeout(holes[index]);
