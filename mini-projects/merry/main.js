@@ -1,4 +1,3 @@
-"use strict";
 const timer = document.querySelector("#timer");
 const scores = document.querySelector("#score");
 const game = document.querySelector("#game");
@@ -8,6 +7,7 @@ const cells = document.querySelectorAll(".cell");
 const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let started = false;
 let score = 0;
+let time = 10;
 
 start.addEventListener("click", () => {
   if (started) return;
@@ -16,7 +16,7 @@ start.addEventListener("click", () => {
   tick();
 });
 
-let gopherPercent = 0.3;
+let gopherPercent = 0.5;
 let bombPercent = 0.7;
 
 function tick() {
@@ -43,6 +43,10 @@ function tick() {
 
 cells.forEach((cell, index) => {
   cell.querySelector(".gopher").addEventListener("click", (event) => {
+    score += 10;
+    scores.textContent = score;
+    console.log(score);
+    console.log(score.textContent);
     event.target.classList.add("dead");
     event.target.classList.add("hidden");
     clearTimeout(holes[index]);
