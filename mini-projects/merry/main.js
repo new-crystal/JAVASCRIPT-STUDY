@@ -7,11 +7,26 @@ const cells = document.querySelectorAll(".cell");
 const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let started = false;
 let score = 0;
-let time = 10;
+let time = 20;
 
 start.addEventListener("click", () => {
   if (started) return;
   started = true;
+  const timerId = setInterval(() => {
+    time = (time * 10 - 1) / 10;
+    timer.textContent = time;
+    if (time === 0) {
+      clearInterval(timerId);
+      clearInterval(tickId);
+      setTimeout(() => {
+        if (score >= 200) {
+          alert(`훌륭하시군요! 점수는${score}점!`);
+        } else {
+          alert(`아쉽군요! 점수는${score}점! 다시 도전해 보세요!`);
+        }
+      }, 50);
+    }
+  }, 100);
   const tickId = setInterval(tick, 1000);
   tick();
 });
@@ -45,8 +60,6 @@ cells.forEach((cell, index) => {
   cell.querySelector(".gopher").addEventListener("click", (event) => {
     score += 10;
     scores.textContent = score;
-    console.log(score);
-    console.log(score.textContent);
     event.target.classList.add("dead");
     event.target.classList.add("hidden");
     clearTimeout(holes[index]);
