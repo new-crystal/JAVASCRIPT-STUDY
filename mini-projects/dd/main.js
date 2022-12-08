@@ -1,10 +1,59 @@
+/**
+ * feild set
+ */
 const background = document.querySelector('.background')
 const backgroundRect = background.getBoundingClientRect();
+/**
+ * game set
+ */
+const vegetable_count = 10;
+const but_count = 10;
+/**
+ * botton set
+ */
+const gBtn = document.querySelector('.startBtn');
+const timerBox = document.querySelector('.timerBox');
+const gTimer = document.querySelector('.timer');
+const gCounter = document.querySelector('.conut');
+
+let started = false;
+let count = 0;
+let timer = undefined;
+
+
+gBtn.addEventListener('click', () => {
+    // console.log('btnTest');
+    if(started){
+        stopGame();
+    } else {
+        startGame();
+    }
+    started = !started;
+})
+
+function startGame() {
+    initCatching();
+    showStopBtn();
+    showTimerBox();
+}
+function stopGame() {
+
+}
+function showStopBtn() {
+    // console.log('stopTest');
+    const playImg = gBtn.querySelector('.fa-play');
+    playImg.classList.add('fa-stop');
+    playImg.classList.remove('fa-play');
+}
+
+function showTimerBox() {
+    timerBox.style.visibility = 'visible'
+}
 
 function initCatching() {
-    console.log(backgroundRect);
-    addItem('vegetable', 10, 'img/blueberry.png');
-    addItem('bug', 10, 'img/bug.png');
+    // console.log(backgroundRect);
+    addItem('vegetable', vegetable_count, 'img/blueberry.png');
+    addItem('bug', but_count, 'img/bug.png');
 }
 
 function addItem(className, count, imgPath){
@@ -34,4 +83,3 @@ function randomNumber(min, max) {
   
 
 }
-initCatching();
