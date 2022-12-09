@@ -1,19 +1,13 @@
 'use strict';
 
-/**
- * feild set
- */
+
 const background = document.querySelector('.background')
 const backgroundRect = background.getBoundingClientRect();
-/**
- * game set
- */
-const vegetable_count = 10;
-const bug_count = 10;
-const init_timer = 5;
-/**
- * botton set
- */
+
+const vegetable_count = 30;
+const bug_count = 20;
+const init_timer = 10;
+
 const gBtn = document.querySelector('.startBtn');
 const timerBox = document.querySelector('.timerBox');
 const gTimer = document.querySelector('.timer');
@@ -21,38 +15,49 @@ const gCounter = document.querySelector('.count');
 const showPopUp = document.querySelector('.popUpBox');
 const popBtn = document.querySelector('.popBtn');
 const popMsg = document.querySelector('.popMsg');
+const target = document.querySelector('.target')
 let started = false;
 let count = 0;
 let timer = undefined;
 
 
 gBtn.addEventListener('click', () => {
-    // console.log('btnTest');
     if(started){
         stopGame();
     } else {
         startGame();
     }
-    started = !started;
+    
 })
+background.addEventListener('click', onClick);
+popBtn.addEventListener('click',()=>{
+    window.location.reload()
+    hidePopUp();
+    startGame();
 
+})
 function startGame() {
+    started = true;
     initCatching();
     showStopBtn();
     showTimerBox();
     startTimer();
-   
+
 }
 function stopGame() {
+    started = false;
+        initCatching();
+
     stopTimer();
-    showPopMsg('RE?');
+    showPopMsg('Replay??');
 }
+
+
 function showStopBtn() {
-    // console.log('stopTest');
     const playImg = gBtn.querySelector('.fa-play');
     playImg.classList.add('fa-stop');
     playImg.classList.remove('fa-play');
-   
+
 }
 
 function showTimerBox() {
@@ -65,6 +70,8 @@ function startTimer() {
     timer = setInterval(()=> {
         if(timing <= 0){
             clearInterval(timer);
+            // finishGame(false);
+            stopGame()
             return;
         }
         updateTime(--timing)
@@ -84,8 +91,16 @@ function updateTime(time) {
 }
 
 function showPopMsg(text){
-    popMsg.innerText = text;
-    
+    popMsg.innerText = text;   
+}
+function hideGBtn() {
+    gBtn.style.visibility = 'hidden';
+}
+
+function hidePopUp() {
+    showPopUp.style.visibility = 'hidden';
+    startTimer();
+    started = true;
 }
 /**
  * HTML Set
@@ -96,6 +111,37 @@ function initCatching() {
     // console.log(backgroundRect);
     addItem('vegetable', vegetable_count, 'img/vegetable.png');
     addItem('bug', bug_count, 'img/bug.png');
+    
+}
+
+function onClick(event) {
+    if(!started){
+        return;
+    }
+    const target = event.target;
+    if(target.matches('.bug')){
+        target.remove();
+        count++;
+        updateScoreBoard();
+        if(count === bug_count){
+            stopTimer();
+            finishGame(true);
+
+        }
+    }else if (target.matches('.vegetable')){
+        stopTimer();
+        finishGame(false);
+        count === bug_count
+    }
+}
+function finishGame(win) {
+    hideGBtn();
+    showPopMsg(win ? "WIN 👍👍👍": "LOST⁉️");
+    started = false;
+}
+
+function updateScoreBoard() {
+    gCounter.innerText = bug_count - count;
 }
 
 function addItem(className, count, imgPath){
@@ -116,12 +162,15 @@ for(let i = 0; i < count; i++){
     item.style.width = '120px';
     item.style.height = '120px';
     
+
+
+
+    
     background.appendChild(item);
 }
 
 function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
-  }
-  
-
+    
+    }
 }

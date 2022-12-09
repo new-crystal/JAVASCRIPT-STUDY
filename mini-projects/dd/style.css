@@ -1,10 +1,18 @@
 body {
+    
     width: 1920px;
     height:900px;
     background-color:rgb(230, 230, 230);
     text-align: center;
-
+    
 }
+
+.container {
+    width:100%;
+    height:100%;
+    /* z-index: 50; */
+}
+
 button {
     background-color: rgb(166, 166, 166);
     border:none;
@@ -14,6 +22,8 @@ button {
     -moz-border-radius:20px;
     -ms-border-radius:20px;
     -o-border-radius:20px;
+    z-index: 20;
+
 }
 
 .game {
@@ -38,10 +48,10 @@ button {
     flex-direction: column;
     width: 200px;
     height:250px;
-    border:3px solid rgb(71, 74, 65);
     justify-content: center;
     align-items: center;
     padding: 20px;
+    margin: 50px;
     
 }
 header > button {
@@ -74,7 +84,6 @@ header > button {
 }
 
 .count {
-    border: 3px solid rgb(64, 83, 89);
     border-radius: 50%;
     width: 80px;
     height: 80px;
@@ -89,38 +98,49 @@ header > button {
 }
 
 .background {
-    /* background-color: aqua; */
     position:relative;
     width: 2000px;
     height: 1000px;
     margin-top: 400px;
+    z-index: 10;
+}
+.background:hover{
+    cursor: url('./img/Target.png')30 30, pointer;
 }
 
 .popUpBox {
     display:block;
     background-color:rgb(73, 73, 73);
-    opacity: 0.5;
+    opacity: 1;
     margin: auto;
+    margin-top: 150px;
     transform: translateY(-650%);
-    width: 500px;
+    width: 700px;
     height:250px;
     -webkit-transform: translateY(-650%);
     -moz-transform: translateY(-650%);
     -ms-transform: translateY(-650%);
     -o-transform: translateY(-650%);
     visibility: hidden;
+    border-radius:20px;
+    -webkit-border-radius:20px;
+    -moz-border-radius:20px;
+    -ms-border-radius:20px;
+    -o-border-radius:20px;
 }
 
-.popUpBox > button {
-
-width: 50px;
-height: 50px;
-margin-top: 20px;
-cursor:pointer;
+.popUpBox > button { 
+    width: 50px; 
+    height: 50px; 
+    margin-top: 50px; 
+    cursor:pointer; 
+    
+    
 }
 
 .popMsg {
-    /* display:block; */
     font-size: 50px;
     color:rgb(255, 249, 249);
+    margin-top: 20px;
 }
+
