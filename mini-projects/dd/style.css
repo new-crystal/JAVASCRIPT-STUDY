@@ -67,7 +67,7 @@ header > button {
     display:flex;
     justify-content: center;
     align-items:center;
-    font-size: 50px;
+    font-size: 20px;
     padding: 20px;
     margin: 10px 10px;
     border-radius:10px;
@@ -93,21 +93,22 @@ header > button {
     position:relative;
     width: 2000px;
     height: 1000px;
-    margin-top: 200px;
+    margin-top: 400px;
 }
 
 .popUpBox {
     display:block;
-    background-color:rgb(255, 255, 255);
+    background-color:rgb(73, 73, 73);
     opacity: 0.5;
     margin: auto;
-    transform: translateY(-150%);
-    width: 300px;
-    height:150px;
-    -webkit-transform: translateY(-150%);
-    -moz-transform: translateY(-150%);
-    -ms-transform: translateY(-150%);
-    -o-transform: translateY(-150%);
+    transform: translateY(-650%);
+    width: 500px;
+    height:250px;
+    -webkit-transform: translateY(-650%);
+    -moz-transform: translateY(-650%);
+    -ms-transform: translateY(-650%);
+    -o-transform: translateY(-650%);
+    visibility: hidden;
 }
 
 .popUpBox > button {
@@ -118,11 +119,8 @@ margin-top: 20px;
 cursor:pointer;
 }
 
-.endMessage {
-    display:block;
+.popMsg {
+    /* display:block; */
     font-size: 50px;
-}
-
-.popUpBox-hide {
-    display: none;
+    color:rgb(255, 249, 249);
 }
