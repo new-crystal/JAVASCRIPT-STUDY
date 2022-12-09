@@ -5,7 +5,7 @@ const computerOptions = ['rock', 'paper', 'scissors'];
 const defaultValue = document.querySelector('#defaultValue')
 
 //const timer = document.querySelector('#timer');
-
+//ff
 // Choice
 let computerChoice = 0; //컴퓨터 결과
 let userChoice = 0;
