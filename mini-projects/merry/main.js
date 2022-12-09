@@ -3,17 +3,11 @@ const scores = document.querySelector("#score");
 const game = document.querySelector("#game");
 const start = document.querySelector("#start");
 const cells = document.querySelectorAll(".cell");
-const cursor = document.querySelector(".cursor");
 
 const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let started = false;
 let score = 0;
 let time = 20;
-
-cursor.addEventListener("mousemove", (e) => {
-  cursor.style.left = `${e.clientX}px`;
-  cursor.style.top = `${e.clientY}px`;
-});
 
 start.addEventListener("click", () => {
   if (started) return;
