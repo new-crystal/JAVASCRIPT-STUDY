@@ -1,19 +1,13 @@
 'use strict';
 
-/**
- * feild set
- */
+
 const background = document.querySelector('.background')
 const backgroundRect = background.getBoundingClientRect();
-/**
- * game set
- */
+
 const vegetable_count = 30;
 const bug_count = 20;
 const init_timer = 10;
-/**
- * botton set
- */
+
 const gBtn = document.querySelector('.startBtn');
 const timerBox = document.querySelector('.timerBox');
 const gTimer = document.querySelector('.timer');
@@ -48,7 +42,7 @@ function startGame() {
     showStopBtn();
     showTimerBox();
     startTimer();
-   
+
 }
 function stopGame() {
     started = false;
@@ -63,7 +57,7 @@ function showStopBtn() {
     const playImg = gBtn.querySelector('.fa-play');
     playImg.classList.add('fa-stop');
     playImg.classList.remove('fa-play');
-   
+
 }
 
 function showTimerBox() {
