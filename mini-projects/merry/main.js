@@ -10,11 +10,6 @@ let started = false;
 let score = 0;
 let time = 20;
 
-// cursor.addEventListener("mousemove", (e) => {
-//   cursor.style.left = `${e.clientX}px`;
-//   cursor.style.top = `${e.clientY}px`;
-// });
-
 start.addEventListener("click", () => {
   if (started) return;
   started = true;
