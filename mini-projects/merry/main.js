@@ -3,7 +3,6 @@ const scores = document.querySelector("#score");
 const game = document.querySelector("#game");
 const start = document.querySelector("#start");
 const cells = document.querySelectorAll(".cell");
-//const cursor = document.querySelector(".cursor");
 
 const holes = [0, 0, 0, 0, 0, 0, 0, 0, 0];
 let started = false;
