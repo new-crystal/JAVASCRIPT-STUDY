@@ -1,6 +1,19 @@
 
-html{cursor: url("./tori.png"), auto}
+html{cursor: url("./tori.png") 30 30, pointer}
 
+.header{
+  font-size: 40px;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+#start {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  margin-left: 20px;
+}
 .cell {
   display: inline-block; position: relative;
     width: 200px; height: 200px;
