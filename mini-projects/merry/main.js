@@ -15,13 +15,17 @@ start.addEventListener("click", () => {
   const timerId = setInterval(() => {
     time = (time * 10 - 1) / 10;
     timer.textContent = time;
-    if (time === 0) {
+    if (time === 0 || time < 0) {
       clearInterval(timerId);
       clearInterval(tickId);
       setTimeout(() => {
         if (score >= 200) {
+          started = false;
+          time = 20;
           alert(`훌륭하시군요! 점수는${score}점!`);
         } else {
+          started = false;
+          time = 20;
           alert(`아쉽군요! 점수는${score}점! 다시 도전해 보세요!`);
         }
       }, 50);
