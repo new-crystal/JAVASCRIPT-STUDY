@@ -23,10 +23,12 @@ start.addEventListener("click", () => {
           started = false;
           time = 20;
           alert(`훌륭하시군요! 점수는${score}점!`);
+          score = 0;
         } else {
           started = false;
           time = 20;
           alert(`아쉽군요! 점수는${score}점! 다시 도전해 보세요!`);
+          score = 0;
         }
       }, 50);
     }
