@@ -1,12 +1,11 @@
 'use strict';
 
-
 const background = document.querySelector('.background')
 const backgroundRect = background.getBoundingClientRect();
 
 const vegetable_count = 30;
 const bug_count = 20;
-const init_timer = 10;
+const init_timer = 70;
 
 const gBtn = document.querySelector('.startBtn');
 const timerBox = document.querySelector('.timerBox');
@@ -30,12 +29,13 @@ gBtn.addEventListener('click', () => {
     
 })
 background.addEventListener('click', onClick);
+
 popBtn.addEventListener('click',()=>{
-    window.location.reload()
     hidePopUp();
     startGame();
-
+    count = 0;
 })
+
 function startGame() {
     started = true;
     initCatching();
@@ -56,7 +56,7 @@ function stopGame() {
 function showStopBtn() {
     const playImg = gBtn.querySelector('.fa-play');
     playImg.classList.add('fa-stop');
-    playImg.classList.remove('fa-play');
+    // playImg.classList.remove('fa-play');
 
 }
 
@@ -122,6 +122,7 @@ function onClick(event) {
     if(target.matches('.bug')){
         target.remove();
         count++;
+        console.log(count)
         updateScoreBoard();
         if(count === bug_count){
             stopTimer();
@@ -131,7 +132,7 @@ function onClick(event) {
     }else if (target.matches('.vegetable')){
         stopTimer();
         finishGame(false);
-        count === bug_count
+        // count === bug_count
     }
 }
 function finishGame(win) {
