@@ -12,6 +12,7 @@ let time = 20;
 start.addEventListener("click", () => {
   if (started) return;
   started = true;
+  scores.textContent = 0;
   const timerId = setInterval(() => {
     time = (time * 10 - 1) / 10;
     timer.textContent = time;

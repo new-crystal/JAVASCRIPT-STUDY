@@ -1,11 +1,12 @@
 
-html{cursor: url("./tori.png"), auto}
+html{cursor: url("./tori.png") 30 30, pointer}
 
 .header{
   font-size: 40px;
   padding: 20px;
   margin: 0 auto;
 }
+
 #start {
   padding: 10px;
   border-radius: 10px;
